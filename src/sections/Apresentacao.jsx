@@ -9,7 +9,7 @@ export default function Apresentacao() {
     <section id="apresentacao" className="section apresentacao">
       <div className="apresentacao__stage">
         <Window className="title-bar">
-          <h2 className="section-title section-title--outline">Apresentação</h2>
+          <h2 className="section-title">Apresentação</h2>
         </Window>
         <Window className="apresentacao__body">
           <div className="window-text">

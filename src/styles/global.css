@@ -73,14 +73,6 @@ body {
   color: var(--navy);
 }
 
-/* Linha rosa por dentro da letra, como "Introduction" e "Hypothesis" no PDF */
-.section-title--outline {
-  -webkit-text-stroke: 1px var(--pink);
-  text-shadow:
-    1.5px 0 0 var(--navy), -1.5px 0 0 var(--navy), 0 1.5px 0 var(--navy), 0 -1.5px 0 var(--navy),
-    1.5px 1.5px 0 var(--navy), -1.5px -1.5px 0 var(--navy), 1.5px -1.5px 0 var(--navy), -1.5px 1.5px 0 var(--navy);
-}
-
 /* Adesivo com contorno branco grosso, como "Thank you" e "Conclusion" */
 .section-title--sticker {
   -webkit-text-stroke: 9px var(--white);
@@ -98,6 +90,9 @@ body {
 
 /* Texto corrido dentro das janelas, justificado como nos slides */
 .window-text {
+  font-family: var(--font-title);
+  font-weight: 400;
+  color: var(--navy);
   padding: 32px 40px 48px;
   text-align: justify;
   hyphens: auto;
@@ -254,7 +249,7 @@ body {
 .deco--cursor {
   width: 46px;
   right: 34px;
-  bottom: 18px;
+  bottom: -4px;
   transform: rotate(-8deg);
 }
 
@@ -461,7 +456,7 @@ body {
   .deco--star-b { width: 54px; left: 30px; top: -48px; }
   .deco--sparkle { width: 64px; left: 84px; top: -64px; }
   .deco--block { width: 64px; right: -8px; top: -44px; }
-  .deco--cursor { width: 32px; right: 18px; bottom: 20px; }
+  .deco--cursor { width: 32px; right: 18px; bottom: 4px; }
   .deco--heart { width: 68px; left: -8px; bottom: -44px; }
 
   .window-text { padding: 24px 20px 40px; font-size: 1rem; text-align: left; }
