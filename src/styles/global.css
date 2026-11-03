@@ -262,11 +262,19 @@ body {
 
 /* ---------- Apresentação ---------- */
 
+/* Texto colado na borda esquerda da tela, colagem no espaço livre à direita */
+.apresentacao__layout {
+  justify-self: stretch;
+  width: calc(100% + 16px);
+  margin-left: -16px;
+  display: grid;
+  grid-template-columns: minmax(0, 660px) minmax(0, 1fr);
+  align-items: center;
+  gap: 56px;
+}
+
 .apresentacao__stage {
   position: relative;
-  justify-self: start;
-  width: min(720px, 100%);
-  margin-left: -16px;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -291,11 +299,69 @@ body {
   transform: rotate(-30deg);
 }
 
-.apresentacao__heart {
-  width: 140px;
+/* Colagem de polaroids */
+.collage {
+  position: relative;
+  justify-self: center;
+  width: min(480px, 100%);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.polaroid {
+  margin: 0;
+  padding: 6px 6px 22px;
+  background: var(--white);
+  box-shadow: 6px 6px 0 var(--shadow);
+  transform: rotate(var(--tilt, 0deg)) translateY(var(--shift, 0));
+  transition: transform 0.2s ease;
+}
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.polaroid:nth-child(1) { --tilt: -6deg; --shift: 6px; }
+.polaroid:nth-child(2) { --tilt: 4deg; --shift: -10px; }
+.polaroid:nth-child(3) { --tilt: -3deg; --shift: 8px; }
+.polaroid:nth-child(4) { --tilt: 5deg; --shift: -4px; }
+.polaroid:nth-child(5) { --tilt: -5deg; --shift: 10px; }
+.polaroid:nth-child(6) { --tilt: 3deg; --shift: -6px; }
+
+.polaroid:hover {
+  position: relative;
+  z-index: 1;
+  transform: rotate(0deg) scale(1.08);
+}
+
+.collage__sparkle {
+  width: 72px;
+  top: -48px;
   right: -20px;
-  bottom: -10px;
-  transform: rotate(8deg);
+  z-index: 2;
+}
+
+.collage__heart {
+  width: 84px;
+  bottom: -36px;
+  left: -34px;
+  z-index: 2;
+  transform: rotate(-12deg);
+}
+
+@media (max-width: 1000px) {
+  .apresentacao__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 72px;
+  }
+
+  .apresentacao__stage {
+    max-width: 660px;
+  }
 }
 
 /* ---------- Assuntos ---------- */
@@ -464,7 +530,10 @@ body {
   .title-bar { padding: 14px 20px; }
   .apresentacao__body { min-height: 200px; }
   .apresentacao__cursor { width: 40px; right: 0; top: 14px; }
-  .apresentacao__heart { width: 80px; right: -8px; bottom: 10px; }
+  .collage { width: calc(100% - 32px); gap: 4px; }
+  .polaroid { padding: 4px 4px 14px; box-shadow: 4px 4px 0 var(--shadow); }
+  .collage__sparkle { width: 48px; top: -36px; right: -12px; }
+  .collage__heart { width: 56px; bottom: -28px; left: -20px; }
 
   .assuntos__cards { grid-template-columns: minmax(0, 1fr); gap: 52px; }
   .assuntos__card { min-height: 170px; }

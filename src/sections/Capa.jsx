@@ -24,7 +24,7 @@ export default function Capa() {
             <p className="capa__subtitle">Portfolio</p>
           </div>
           <img className="capa__photo" src={fotoMands} alt="Foto da Mands" width="724" height="1280" />
-          <PixelButton onClick={() => scrollToSection('apresentacao')}>Continuar</PixelButton>
+          <PixelButton onClick={() => scrollToSection('apresentacao')}>Iniciar</PixelButton>
         </Window>
 
         <Star className="deco deco--star-a" />
