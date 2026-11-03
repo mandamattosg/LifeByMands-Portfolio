@@ -23,7 +23,9 @@ export default function Capa() {
             </h1>
             <p className="capa__subtitle">Portfolio</p>
           </div>
-          <img className="capa__photo" src={fotoMands} alt="Foto da Mands" width="724" height="1280" />
+          <span className="capa__photo">
+            <img src={fotoMands} alt="Foto da Mands" width="724" height="1280" />
+          </span>
           <PixelButton onClick={() => scrollToSection('apresentacao')}>Iniciar</PixelButton>
         </Window>
 
