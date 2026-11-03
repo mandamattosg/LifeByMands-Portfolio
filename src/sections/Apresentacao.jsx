@@ -27,12 +27,12 @@ export default function Apresentacao() {
       <div className="apresentacao__layout">
         <div className="apresentacao__stage">
           <Window className="title-bar">
-            <h2 className="section-title">Apresentação</h2>
+            <h2 className="section-title">Quem é Mands?</h2>
           </Window>
           <Window className="apresentacao__body">
             <div className="window-text">
               <p>
-                Amanda Mattos Gontijo, conhecida como Mands, é engenheira, leitora e criadora de conteúdo que une
+                Amanda Gontijo, conhecida como Mands, é engenheira, leitora e criadora de conteúdo que une
                 literatura, tecnologia e criatividade. Nas redes sociais, compartilha sua paixão pelos livros,
                 especialmente por meio de recomendações, opiniões, dicas de leitura e conteúdos sobre Kindle.
               </p>
@@ -47,7 +47,7 @@ export default function Apresentacao() {
                 leitora é justamente o que torna sua perspectiva única.
               </p>
             </div>
-            <PixelButton onClick={() => scrollToSection('assuntos')}>Yes</PixelButton>
+            <PixelButton onClick={() => scrollToSection('assuntos')}>Saber mais</PixelButton>
           </Window>
           <PixelCursor className="deco apresentacao__cursor" />
         </div>
