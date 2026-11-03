@@ -447,9 +447,10 @@ body {
   transform: rotate(-14deg);
 }
 
+/* Longe do brilho azul grande que fica no canto de baixo à direita */
 .assuntos__corner--b {
-  bottom: 14px;
-  right: 22px;
+  bottom: 52px;
+  right: 84px;
 }
 
 .topic,
@@ -679,7 +680,7 @@ body {
   .topic-icon svg { width: 32px; height: 32px; }
   .assuntos__corner { width: 22px; }
   .assuntos__corner--a { top: 8px; left: 10px; }
-  .assuntos__corner--b { bottom: 8px; right: 12px; }
+  .assuntos__corner--b { bottom: 36px; right: 52px; }
   .assuntos__cursor { width: 38px; right: -4px; top: 28px; }
   .assuntos__sparkle { width: 70px; right: -14px; bottom: -44px; }
 
