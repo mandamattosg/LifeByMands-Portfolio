@@ -158,6 +158,16 @@ export function BoltIcon(props) {
   )
 }
 
+export function ClapperIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <rect x="6" y="20" width="36" height="22" rx="2" fill="#fff" />
+      <path d="M6 20 5 12l34-6 1 8Z" fill="var(--navy)" />
+      <path d="m13 11 4 6m6-8 4 6m6-8 4 6" stroke="#fff" />
+    </LineIcon>
+  )
+}
+
 export function BlockSparkle(props) {
   return (
     <svg viewBox="0 0 120 120" aria-hidden="true" shapeRendering="crispEdges" {...props}>
