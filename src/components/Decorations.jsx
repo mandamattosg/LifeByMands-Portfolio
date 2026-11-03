@@ -100,6 +100,64 @@ export function Star(props) {
   )
 }
 
+// Ícones de traço para os temas (livro, ciência, engenharia, tecnologia).
+function LineIcon({ children, ...props }) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      aria-hidden="true"
+      fill="none"
+      stroke="var(--navy)"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      {children}
+    </svg>
+  )
+}
+
+export function BookIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <path d="M24 12C19 8 11 8 5 10v26c6-2 14-2 19 2 5-4 13-4 19-2V10c-6-2-14-2-19 2Z" fill="#fff" />
+      <path d="M24 12v26" />
+    </LineIcon>
+  )
+}
+
+export function AtomIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <ellipse cx="24" cy="24" rx="20" ry="8" />
+      <ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(60 24 24)" />
+      <ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(120 24 24)" />
+      <circle cx="24" cy="24" r="3" fill="var(--hot-pink)" stroke="none" />
+    </LineIcon>
+  )
+}
+
+export function GearIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <path
+        d="M21 4h6l1 6 4 2 5-4 4 4-4 5 2 4 6 1v6l-6 1-2 4 4 5-4 4-5-4-4 2-1 6h-6l-1-6-4-2-5 4-4-4 4-5-2-4-6-1v-6l6-1 2-4-4-5 4-4 5 4 4-2Z"
+        fill="#fff"
+      />
+      <circle cx="24" cy="24" r="6" />
+    </LineIcon>
+  )
+}
+
+export function BoltIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <path d="M27 4 9 27h13l-3 17 20-25H26Z" fill="var(--yellow, #ffe066)" />
+    </LineIcon>
+  )
+}
+
 export function BlockSparkle(props) {
   return (
     <svg viewBox="0 0 120 120" aria-hidden="true" shapeRendering="crispEdges" {...props}>
