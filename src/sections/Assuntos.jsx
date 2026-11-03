@@ -22,7 +22,7 @@ import {
 const FILEIRAS = [
   [
     { tipo: 'icone', Icone: Sparkle, giro: 0, y: -16 },
-    { tipo: 'frase', texto: 'recomendação de livros', estilo: 'grande', giro: -4, y: 10 },
+    { tipo: 'frase', texto: 'recomendação de livros', estilo: 'grande', giro: -4, y: -4 },
     { tipo: 'icone', Icone: BookIcon, giro: -10, y: -12 },
     { tipo: 'frase', texto: 'a ciência por trás dos livros', estilo: 'rosa', giro: 5, y: -6 },
     { tipo: 'icone', Icone: AtomIcon, giro: 12, y: 16 },
