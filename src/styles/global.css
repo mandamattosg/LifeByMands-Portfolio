@@ -485,6 +485,17 @@ body {
   border: 2px dashed var(--navy);
 }
 
+/* Ingresso de cinema: fundo escuro com picote tracejado por dentro */
+.topic--cinema {
+  background: var(--navy);
+  color: var(--pink);
+  border-radius: 6px;
+  padding: 10px 20px;
+  outline: 2px dashed var(--pink);
+  outline-offset: -6px;
+  box-shadow: 4px 4px 0 var(--shadow);
+}
+
 .topic--azul {
   background: var(--blue);
   color: var(--white);

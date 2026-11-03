@@ -30,7 +30,7 @@ const FILEIRAS = [
     { tipo: 'icone', Icone: PixelHeart, giro: -8, y: -12 },
     { tipo: 'frase', texto: 'como o kindle funciona', estilo: 'branco', giro: 4, y: -10 },
     { tipo: 'icone', Icone: BoltIcon, giro: 10, y: 12 },
-    { tipo: 'frase', texto: 'adaptações literárias', estilo: 'rosa', giro: -5, y: 6 },
+    { tipo: 'frase', texto: 'adaptações literárias', estilo: 'cinema', giro: -5, y: 6 },
   ],
   [
     { tipo: 'icone', Icone: ClapperIcon, giro: 8, y: -10 },
