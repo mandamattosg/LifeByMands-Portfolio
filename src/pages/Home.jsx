@@ -1,33 +1,17 @@
-import Window from '../components/Window.jsx'
-import PixelButton from '../components/PixelButton.jsx'
-import { BlockSparkle, PixelCursor, PixelHeart, Sparkle, Star } from '../components/Decorations.jsx'
+import Capa from '../sections/Capa.jsx'
+import Apresentacao from '../sections/Apresentacao.jsx'
+import Assuntos from '../sections/Assuntos.jsx'
+import Conteudo from '../sections/Conteudo.jsx'
+import Contato from '../sections/Contato.jsx'
 
 export default function Home() {
   return (
-    <main className="page home">
-      <div className="home__stage">
-        <Window className="home__window">
-          <h1 className="home__title">
-            <svg viewBox="0 0 800 200" role="img" aria-label="Life by Mands">
-              <path id="title-arc" d="M0 190 Q400 10 800 190" fill="none" />
-              <text>
-                <textPath href="#title-arc" startOffset="50%" textAnchor="middle">
-                  LIFE BY MANDS
-                </textPath>
-              </text>
-            </svg>
-          </h1>
-          <p className="home__subtitle">Portfolio</p>
-          <PixelButton>Ok</PixelButton>
-        </Window>
-
-        <Star className="deco deco--star-a" />
-        <Star className="deco deco--star-b" />
-        <Sparkle className="deco deco--sparkle" />
-        <BlockSparkle className="deco deco--block" />
-        <PixelCursor className="deco deco--cursor" />
-        <PixelHeart className="deco deco--heart" />
-      </div>
+    <main>
+      <Capa />
+      <Apresentacao />
+      <Assuntos />
+      <Conteudo />
+      <Contato />
     </main>
   )
 }

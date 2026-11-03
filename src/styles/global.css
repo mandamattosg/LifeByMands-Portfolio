@@ -49,13 +49,42 @@ body {
 
 /* ---------- Layout ---------- */
 
-.page {
+.section {
+  position: relative;
   min-height: 100vh;
   min-height: 100dvh;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   place-items: center;
-  padding: 48px 16px;
+  padding: 96px 16px;
+  overflow-x: clip;
+}
+
+/* ---------- Títulos de seção ---------- */
+
+.section-title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 7vw, 4.75rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+/* Linha rosa por dentro da letra, como "Introduction" e "Hypothesis" no PDF */
+.section-title--outline {
+  -webkit-text-stroke: 2px var(--pink);
+  text-shadow:
+    2px 0 0 var(--navy), -2px 0 0 var(--navy), 0 2px 0 var(--navy), 0 -2px 0 var(--navy),
+    2px 2px 0 var(--navy), -2px -2px 0 var(--navy), 2px -2px 0 var(--navy), -2px 2px 0 var(--navy);
+}
+
+/* Adesivo com contorno branco grosso, como "Thank you" e "Conclusion" */
+.section-title--sticker {
+  -webkit-text-stroke: 16px var(--white);
+  paint-order: stroke fill;
 }
 
 /* ---------- Janela rosa ---------- */
@@ -108,14 +137,14 @@ body {
   filter: drop-shadow(10px 10px 0 var(--shadow));
 }
 
-/* ---------- Home ---------- */
+/* ---------- Capa ---------- */
 
-.home__stage {
+.capa__stage {
   position: relative;
   width: min(960px, 100%);
 }
 
-.home__window {
+.capa__window {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,18 +152,18 @@ body {
   min-height: 460px;
 }
 
-.home__title {
+.capa__title {
   margin: 0;
   width: min(760px, 100%);
 }
 
-.home__title svg {
+.capa__title svg {
   display: block;
   width: 100%;
   overflow: visible;
 }
 
-.home__title text {
+.capa__title text {
   font-family: var(--font-title);
   font-weight: 700;
   font-size: 96px;
@@ -142,7 +171,7 @@ body {
   fill: var(--navy);
 }
 
-.home__subtitle {
+.capa__subtitle {
   margin: 4px 0 auto;
   font-family: var(--font-title);
   font-weight: 600;
@@ -152,13 +181,16 @@ body {
   color: var(--navy);
 }
 
-.home__window .pixel-button {
-  margin-top: 56px;
-  transform: translateY(50%);
+/* Botão "pendurado" na borda de baixo da janela, como no PDF */
+.window > .pixel-button {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
 }
 
-.home__window .pixel-button:active {
-  transform: translate(4px, calc(50% + 4px));
+.window > .pixel-button:active {
+  transform: translate(calc(-50% + 4px), calc(50% + 4px));
 }
 
 .deco--star-a {
@@ -201,22 +233,191 @@ body {
   transform: rotate(-10deg);
 }
 
+/* ---------- Apresentação ---------- */
+
+.apresentacao__stage {
+  position: relative;
+  justify-self: start;
+  width: min(1000px, 100%);
+  margin-left: -16px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.apresentacao .window {
+  border-radius: 0 28px 28px 0;
+}
+
+.title-bar {
+  padding: 28px 48px;
+}
+
+.apresentacao__body {
+  min-height: 360px;
+}
+
+.apresentacao__cursor {
+  width: 96px;
+  right: -40px;
+  top: 40px;
+  transform: rotate(-30deg);
+}
+
+.apresentacao__heart {
+  width: 220px;
+  right: -30px;
+  bottom: -20px;
+  transform: rotate(8deg);
+}
+
+/* ---------- Assuntos ---------- */
+
+.assuntos__stage {
+  position: relative;
+  width: min(1000px, 100%);
+}
+
+.assuntos__header {
+  padding: 24px 32px;
+  text-align: center;
+}
+
+.assuntos__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 64px;
+  margin-top: 48px;
+}
+
+.assuntos__card {
+  min-height: 340px;
+}
+
+.assuntos__cursor {
+  width: 90px;
+  right: -10px;
+  top: 30px;
+  transform: rotate(-20deg);
+}
+
+.assuntos__sparkle {
+  width: 170px;
+  right: -80px;
+  bottom: -70px;
+  transform: rotate(18deg);
+}
+
+/* ---------- Conteúdo ---------- */
+
+.conteudo {
+  display: block;
+  place-items: normal;
+  padding: 0;
+}
+
+.conteudo__top {
+  position: relative;
+  filter: drop-shadow(0 14px 0 var(--shadow));
+}
+
+.conteudo__v {
+  min-height: 340px;
+  padding-top: 72px;
+  text-align: center;
+  background: var(--pink);
+  clip-path: polygon(0 0, 100% 0, 100% 28%, 50% 100%, 0 28%);
+}
+
+.conteudo__heart {
+  width: 150px;
+  top: 70px;
+}
+
+.conteudo__heart--left {
+  left: 6%;
+  transform: rotate(14deg);
+}
+
+.conteudo__heart--right {
+  right: 6%;
+  transform: rotate(-14deg);
+}
+
+.conteudo__body {
+  min-height: 70vh;
+  margin-top: 120px;
+  background: var(--pink);
+}
+
+/* ---------- Contato ---------- */
+
+.contato__stage {
+  position: relative;
+  width: min(1000px, 100%);
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+}
+
+.contato__blob {
+  position: relative;
+  padding: 72px clamp(32px, 8vw, 120px);
+  background: var(--pink);
+  border-radius: 60px 90px 50px 70px / 70px 50px 80px 60px;
+  transform: rotate(-2deg);
+}
+
+.contato__blob--back {
+  position: absolute;
+  width: 80%;
+  height: 200px;
+  top: 70px;
+  right: 6%;
+  padding: 0;
+  background: rgba(250, 212, 222, 0.55);
+  transform: rotate(3deg);
+}
+
+.contato__stars {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contato__stars svg {
+  width: 72px;
+}
+
+.contato__stars--left {
+  left: 0;
+}
+
+.contato__stars--right {
+  right: 0;
+}
+
+/* ---------- Celular ---------- */
+
 @media (max-width: 640px) {
-  .page {
-    padding: 96px 16px 64px;
+  .section {
+    padding: 96px 16px 80px;
   }
 
   .window {
     box-shadow: 12px 12px 0 var(--shadow);
   }
 
-  .home__window {
-    padding: 56px 16px 0;
-    min-height: 340px;
-  }
-
   .pixel-button {
     min-width: 160px;
+  }
+
+  .capa__window {
+    padding: 56px 16px 0;
+    min-height: 340px;
   }
 
   .deco--star-a { width: 64px; left: -8px; top: -20px; }
@@ -225,4 +426,27 @@ body {
   .deco--block { width: 84px; right: -8px; top: -60px; }
   .deco--cursor { width: 40px; right: 24px; bottom: 24px; }
   .deco--heart { width: 90px; left: -10px; bottom: -60px; }
+
+  .title-bar { padding: 20px 24px; }
+  .apresentacao__body { min-height: 260px; }
+  .apresentacao__cursor { width: 56px; right: 0; top: 20px; }
+  .apresentacao__heart { width: 110px; right: -10px; bottom: 10px; }
+
+  .assuntos__cards { grid-template-columns: minmax(0, 1fr); gap: 72px; }
+  .assuntos__card { min-height: 220px; }
+  .assuntos__cursor { width: 50px; right: -4px; top: 40px; }
+  .assuntos__sparkle { width: 100px; right: -20px; bottom: -60px; }
+
+  .section-title { font-size: 1.9rem; }
+
+  .conteudo { padding: 0; }
+  .conteudo__v { min-height: 240px; padding-top: 56px; }
+  .conteudo__heart { width: 80px; top: 120px; }
+  .conteudo__body { margin-top: 64px; }
+
+  .contato__blob { padding: 48px 28px; }
+  .section-title--sticker { -webkit-text-stroke-width: 10px; }
+  .contato__stars svg { width: 40px; }
+  .contato__stars--left { left: -8px; }
+  .contato__stars--right { right: -8px; }
 }

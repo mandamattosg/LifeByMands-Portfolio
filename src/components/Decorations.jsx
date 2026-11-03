@@ -78,6 +78,14 @@ export function Sparkle({ fill = 'var(--pink-deep)', ...props }) {
   )
 }
 
+export function FourPointStar(props) {
+  return (
+    <svg viewBox="0 0 100 100" aria-hidden="true" {...props}>
+      <path d="M50 0C52 40 60 48 100 50C60 52 52 60 50 100C48 60 40 52 0 50C40 48 48 40 50 0Z" fill="#111" />
+    </svg>
+  )
+}
+
 export function Star(props) {
   return (
     <svg viewBox="0 0 100 100" aria-hidden="true" {...props}>
