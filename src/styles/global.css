@@ -1,0 +1,228 @@
+:root {
+  --blue: #82a8d3;
+  --blue-deep: #4f7fb0;
+  --white: #ffffff;
+  --pink: #fad4de;
+  --pink-deep: #f2b3c6;
+  --hot-pink: #ec4f8f;
+  --navy: #2c4f73;
+  --ink: #3a3420;
+  --shadow: rgba(38, 44, 58, 0.62);
+  --button: #bdbdbd;
+
+  --font-title: 'Fredoka', 'Trebuchet MS', sans-serif;
+  --font-body: 'Gilda Display', Georgia, serif;
+  --font-pixel: 'VT323', 'Courier New', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--blue);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* ---------- Fundo ---------- */
+
+.checker-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* ---------- Layout ---------- */
+
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  place-items: center;
+  padding: 48px 16px;
+}
+
+/* ---------- Janela rosa ---------- */
+
+.window {
+  position: relative;
+  background: var(--pink);
+  border-radius: 28px;
+  box-shadow: 20px 20px 0 var(--shadow);
+}
+
+/* ---------- Botão pixel ---------- */
+
+.pixel-button {
+  font-family: var(--font-pixel);
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #111;
+  background: #fff;
+  border: 4px solid #000;
+  padding: 3px;
+  min-width: 220px;
+  cursor: pointer;
+  box-shadow: 10px 10px 0 var(--shadow);
+}
+
+.pixel-button span {
+  display: block;
+  padding: 6px 16px;
+  background: var(--button);
+  border-right: 4px solid #8a8a8a;
+  border-bottom: 4px solid #8a8a8a;
+}
+
+.pixel-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+.pixel-button:focus-visible {
+  outline: 3px dashed var(--navy);
+  outline-offset: 4px;
+}
+
+/* ---------- Enfeites ---------- */
+
+.deco {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(10px 10px 0 var(--shadow));
+}
+
+/* ---------- Home ---------- */
+
+.home__stage {
+  position: relative;
+  width: min(960px, 100%);
+}
+
+.home__window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 72px 32px 0;
+  min-height: 460px;
+}
+
+.home__title {
+  margin: 0;
+  width: min(760px, 100%);
+}
+
+.home__title svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.home__title text {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 96px;
+  letter-spacing: 2px;
+  fill: var(--navy);
+}
+
+.home__subtitle {
+  margin: 4px 0 auto;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 4vw, 2.75rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.home__window .pixel-button {
+  margin-top: 56px;
+  transform: translateY(50%);
+}
+
+.home__window .pixel-button:active {
+  transform: translate(4px, calc(50% + 4px));
+}
+
+.deco--star-a {
+  width: 110px;
+  left: -56px;
+  top: 10px;
+  transform: rotate(-12deg);
+}
+
+.deco--star-b {
+  width: 130px;
+  left: 30px;
+  top: -70px;
+  transform: rotate(10deg);
+}
+
+.deco--sparkle {
+  width: 150px;
+  left: 150px;
+  top: -120px;
+}
+
+.deco--block {
+  width: 140px;
+  right: -60px;
+  top: -70px;
+}
+
+.deco--cursor {
+  width: 70px;
+  right: 60px;
+  bottom: 40px;
+  transform: rotate(-8deg);
+}
+
+.deco--heart {
+  width: 150px;
+  left: -60px;
+  bottom: -70px;
+  transform: rotate(-10deg);
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 96px 16px 64px;
+  }
+
+  .window {
+    box-shadow: 12px 12px 0 var(--shadow);
+  }
+
+  .home__window {
+    padding: 56px 16px 0;
+    min-height: 340px;
+  }
+
+  .pixel-button {
+    min-width: 160px;
+  }
+
+  .deco--star-a { width: 64px; left: -8px; top: -20px; }
+  .deco--star-b { width: 72px; left: 40px; top: -64px; }
+  .deco--sparkle { width: 84px; left: 110px; top: -84px; }
+  .deco--block { width: 84px; right: -8px; top: -60px; }
+  .deco--cursor { width: 40px; right: 24px; bottom: 24px; }
+  .deco--heart { width: 90px; left: -10px; bottom: -60px; }
+}
