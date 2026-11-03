@@ -32,7 +32,7 @@ body {
   background: var(--blue);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   line-height: 1.5;
   overflow-x: hidden;
 }
@@ -56,7 +56,7 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   place-items: center;
-  padding: 96px 16px;
+  padding: 72px 16px;
   overflow-x: clip;
 }
 
@@ -66,8 +66,8 @@ body {
   margin: 0;
   font-family: var(--font-title);
   font-weight: 700;
-  font-size: clamp(2.4rem, 7vw, 4.75rem);
-  line-height: 1.05;
+  font-size: clamp(1.4rem, 3.6vw, 2.3rem);
+  line-height: 1.1;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--navy);
@@ -75,15 +75,15 @@ body {
 
 /* Linha rosa por dentro da letra, como "Introduction" e "Hypothesis" no PDF */
 .section-title--outline {
-  -webkit-text-stroke: 2px var(--pink);
+  -webkit-text-stroke: 1px var(--pink);
   text-shadow:
-    2px 0 0 var(--navy), -2px 0 0 var(--navy), 0 2px 0 var(--navy), 0 -2px 0 var(--navy),
-    2px 2px 0 var(--navy), -2px -2px 0 var(--navy), 2px -2px 0 var(--navy), -2px 2px 0 var(--navy);
+    1.5px 0 0 var(--navy), -1.5px 0 0 var(--navy), 0 1.5px 0 var(--navy), 0 -1.5px 0 var(--navy),
+    1.5px 1.5px 0 var(--navy), -1.5px -1.5px 0 var(--navy), 1.5px -1.5px 0 var(--navy), -1.5px 1.5px 0 var(--navy);
 }
 
 /* Adesivo com contorno branco grosso, como "Thank you" e "Conclusion" */
 .section-title--sticker {
-  -webkit-text-stroke: 16px var(--white);
+  -webkit-text-stroke: 9px var(--white);
   paint-order: stroke fill;
 }
 
@@ -92,36 +92,36 @@ body {
 .window {
   position: relative;
   background: var(--pink);
-  border-radius: 28px;
-  box-shadow: 20px 20px 0 var(--shadow);
+  border-radius: 20px;
+  box-shadow: 12px 12px 0 var(--shadow);
 }
 
 /* ---------- Botão pixel ---------- */
 
 .pixel-button {
   font-family: var(--font-pixel);
-  font-size: 1.6rem;
+  font-size: 1.25rem;
   line-height: 1;
   color: #111;
   background: #fff;
-  border: 4px solid #000;
-  padding: 3px;
-  min-width: 220px;
+  border: 3px solid #000;
+  padding: 2px;
+  min-width: 150px;
   cursor: pointer;
-  box-shadow: 10px 10px 0 var(--shadow);
+  box-shadow: 6px 6px 0 var(--shadow);
 }
 
 .pixel-button span {
   display: block;
-  padding: 6px 16px;
+  padding: 4px 12px;
   background: var(--button);
-  border-right: 4px solid #8a8a8a;
-  border-bottom: 4px solid #8a8a8a;
+  border-right: 3px solid #8a8a8a;
+  border-bottom: 3px solid #8a8a8a;
 }
 
 .pixel-button:active {
-  transform: translate(4px, 4px);
-  box-shadow: 6px 6px 0 var(--shadow);
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--shadow);
 }
 
 .pixel-button:focus-visible {
@@ -134,27 +134,27 @@ body {
 .deco {
   position: absolute;
   pointer-events: none;
-  filter: drop-shadow(10px 10px 0 var(--shadow));
+  filter: drop-shadow(6px 6px 0 var(--shadow));
 }
 
 /* ---------- Capa ---------- */
 
 .capa__stage {
   position: relative;
-  width: min(960px, 100%);
+  width: min(680px, 100%);
 }
 
 .capa__window {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 72px 32px 0;
-  min-height: 460px;
+  padding: 48px 24px 0;
+  min-height: 320px;
 }
 
 .capa__title {
   margin: 0;
-  width: min(760px, 100%);
+  width: min(480px, 100%);
 }
 
 .capa__title svg {
@@ -172,10 +172,10 @@ body {
 }
 
 .capa__subtitle {
-  margin: 4px 0 auto;
+  margin: 2px 0 auto;
   font-family: var(--font-title);
   font-weight: 600;
-  font-size: clamp(1.6rem, 4vw, 2.75rem);
+  font-size: clamp(1rem, 2.6vw, 1.5rem);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--navy);
@@ -190,46 +190,46 @@ body {
 }
 
 .window > .pixel-button:active {
-  transform: translate(calc(-50% + 4px), calc(50% + 4px));
+  transform: translate(calc(-50% + 3px), calc(50% + 3px));
 }
 
 .deco--star-a {
-  width: 110px;
-  left: -56px;
-  top: 10px;
+  width: 72px;
+  left: -36px;
+  top: 6px;
   transform: rotate(-12deg);
 }
 
 .deco--star-b {
-  width: 130px;
-  left: 30px;
-  top: -70px;
+  width: 86px;
+  left: 20px;
+  top: -46px;
   transform: rotate(10deg);
 }
 
 .deco--sparkle {
-  width: 150px;
-  left: 150px;
-  top: -120px;
+  width: 100px;
+  left: 100px;
+  top: -80px;
 }
 
 .deco--block {
-  width: 140px;
-  right: -60px;
-  top: -70px;
+  width: 92px;
+  right: -40px;
+  top: -46px;
 }
 
 .deco--cursor {
-  width: 70px;
-  right: 60px;
-  bottom: 40px;
+  width: 46px;
+  right: 40px;
+  bottom: 28px;
   transform: rotate(-8deg);
 }
 
 .deco--heart {
-  width: 150px;
-  left: -60px;
-  bottom: -70px;
+  width: 100px;
+  left: -40px;
+  bottom: -46px;
   transform: rotate(-10deg);
 }
 
@@ -238,36 +238,36 @@ body {
 .apresentacao__stage {
   position: relative;
   justify-self: start;
-  width: min(1000px, 100%);
+  width: min(720px, 100%);
   margin-left: -16px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 32px;
 }
 
 .apresentacao .window {
-  border-radius: 0 28px 28px 0;
+  border-radius: 0 20px 20px 0;
 }
 
 .title-bar {
-  padding: 28px 48px;
+  padding: 18px 32px;
 }
 
 .apresentacao__body {
-  min-height: 360px;
+  min-height: 260px;
 }
 
 .apresentacao__cursor {
-  width: 96px;
-  right: -40px;
-  top: 40px;
+  width: 64px;
+  right: -28px;
+  top: 26px;
   transform: rotate(-30deg);
 }
 
 .apresentacao__heart {
-  width: 220px;
-  right: -30px;
-  bottom: -20px;
+  width: 140px;
+  right: -20px;
+  bottom: -10px;
   transform: rotate(8deg);
 }
 
@@ -275,36 +275,36 @@ body {
 
 .assuntos__stage {
   position: relative;
-  width: min(1000px, 100%);
+  width: min(720px, 100%);
 }
 
 .assuntos__header {
-  padding: 24px 32px;
+  padding: 16px 24px;
   text-align: center;
 }
 
 .assuntos__cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 64px;
-  margin-top: 48px;
+  gap: 44px;
+  margin-top: 32px;
 }
 
 .assuntos__card {
-  min-height: 340px;
+  min-height: 240px;
 }
 
 .assuntos__cursor {
-  width: 90px;
-  right: -10px;
-  top: 30px;
+  width: 60px;
+  right: -8px;
+  top: 20px;
   transform: rotate(-20deg);
 }
 
 .assuntos__sparkle {
-  width: 170px;
-  right: -80px;
-  bottom: -70px;
+  width: 110px;
+  right: -54px;
+  bottom: -46px;
   transform: rotate(18deg);
 }
 
@@ -318,20 +318,20 @@ body {
 
 .conteudo__top {
   position: relative;
-  filter: drop-shadow(0 14px 0 var(--shadow));
+  filter: drop-shadow(0 10px 0 var(--shadow));
 }
 
 .conteudo__v {
-  min-height: 340px;
-  padding-top: 72px;
+  min-height: 230px;
+  padding-top: 48px;
   text-align: center;
   background: var(--pink);
   clip-path: polygon(0 0, 100% 0, 100% 28%, 50% 100%, 0 28%);
 }
 
 .conteudo__heart {
-  width: 150px;
-  top: 70px;
+  width: 100px;
+  top: 46px;
 }
 
 .conteudo__heart--left {
@@ -346,7 +346,7 @@ body {
 
 .conteudo__body {
   min-height: 70vh;
-  margin-top: 120px;
+  margin-top: 80px;
   background: var(--pink);
 }
 
@@ -354,25 +354,25 @@ body {
 
 .contato__stage {
   position: relative;
-  width: min(1000px, 100%);
-  min-height: 420px;
+  width: min(720px, 100%);
+  min-height: 300px;
   display: grid;
   place-items: center;
 }
 
 .contato__blob {
   position: relative;
-  padding: 72px clamp(32px, 8vw, 120px);
+  padding: 48px clamp(28px, 6vw, 80px);
   background: var(--pink);
-  border-radius: 60px 90px 50px 70px / 70px 50px 80px 60px;
+  border-radius: 42px 64px 36px 50px / 50px 36px 56px 42px;
   transform: rotate(-2deg);
 }
 
 .contato__blob--back {
   position: absolute;
   width: 80%;
-  height: 200px;
-  top: 70px;
+  height: 140px;
+  top: 50px;
   right: 6%;
   padding: 0;
   background: rgba(250, 212, 222, 0.55);
@@ -389,7 +389,7 @@ body {
 }
 
 .contato__stars svg {
-  width: 72px;
+  width: 46px;
 }
 
 .contato__stars--left {
@@ -404,49 +404,48 @@ body {
 
 @media (max-width: 640px) {
   .section {
-    padding: 96px 16px 80px;
+    padding: 72px 16px 64px;
   }
 
   .window {
-    box-shadow: 12px 12px 0 var(--shadow);
+    box-shadow: 8px 8px 0 var(--shadow);
   }
 
   .pixel-button {
-    min-width: 160px;
+    min-width: 120px;
+    font-size: 1.1rem;
   }
 
   .capa__window {
-    padding: 56px 16px 0;
-    min-height: 340px;
+    padding: 40px 16px 0;
+    min-height: 240px;
   }
 
-  .deco--star-a { width: 64px; left: -8px; top: -20px; }
-  .deco--star-b { width: 72px; left: 40px; top: -64px; }
-  .deco--sparkle { width: 84px; left: 110px; top: -84px; }
-  .deco--block { width: 84px; right: -8px; top: -60px; }
-  .deco--cursor { width: 40px; right: 24px; bottom: 24px; }
-  .deco--heart { width: 90px; left: -10px; bottom: -60px; }
+  .deco--star-a { width: 48px; left: -8px; top: -16px; }
+  .deco--star-b { width: 54px; left: 30px; top: -48px; }
+  .deco--sparkle { width: 64px; left: 84px; top: -64px; }
+  .deco--block { width: 64px; right: -8px; top: -44px; }
+  .deco--cursor { width: 32px; right: 18px; bottom: 20px; }
+  .deco--heart { width: 68px; left: -8px; bottom: -44px; }
 
-  .title-bar { padding: 20px 24px; }
-  .apresentacao__body { min-height: 260px; }
-  .apresentacao__cursor { width: 56px; right: 0; top: 20px; }
-  .apresentacao__heart { width: 110px; right: -10px; bottom: 10px; }
+  .title-bar { padding: 14px 20px; }
+  .apresentacao__body { min-height: 200px; }
+  .apresentacao__cursor { width: 40px; right: 0; top: 14px; }
+  .apresentacao__heart { width: 80px; right: -8px; bottom: 10px; }
 
-  .assuntos__cards { grid-template-columns: minmax(0, 1fr); gap: 72px; }
-  .assuntos__card { min-height: 220px; }
-  .assuntos__cursor { width: 50px; right: -4px; top: 40px; }
-  .assuntos__sparkle { width: 100px; right: -20px; bottom: -60px; }
-
-  .section-title { font-size: 1.9rem; }
+  .assuntos__cards { grid-template-columns: minmax(0, 1fr); gap: 52px; }
+  .assuntos__card { min-height: 170px; }
+  .assuntos__cursor { width: 38px; right: -4px; top: 28px; }
+  .assuntos__sparkle { width: 70px; right: -14px; bottom: -44px; }
 
   .conteudo { padding: 0; }
-  .conteudo__v { min-height: 240px; padding-top: 56px; }
-  .conteudo__heart { width: 80px; top: 120px; }
-  .conteudo__body { margin-top: 64px; }
+  .conteudo__v { min-height: 180px; padding-top: 40px; }
+  .conteudo__heart { width: 60px; top: 84px; }
+  .conteudo__body { margin-top: 48px; }
 
-  .contato__blob { padding: 48px 28px; }
-  .section-title--sticker { -webkit-text-stroke-width: 10px; }
-  .contato__stars svg { width: 40px; }
-  .contato__stars--left { left: -8px; }
-  .contato__stars--right { right: -8px; }
+  .contato__blob { padding: 36px 24px; }
+  .section-title--sticker { -webkit-text-stroke-width: 7px; }
+  .contato__stars svg { width: 30px; }
+  .contato__stars--left { left: -6px; }
+  .contato__stars--right { right: -6px; }
 }
