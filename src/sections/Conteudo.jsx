@@ -4,7 +4,7 @@ import { PixelHeart } from '../components/Decorations.jsx'
 // que deixa o xadrez do fundo aparecer.
 export default function Conteudo() {
   return (
-    <section id="conteudo" className="section conteudo">
+    <section id="conteudo" className="section conteudo" data-scroll="topo">
       <div className="conteudo__top">
         <div className="conteudo__v">
           <h2 className="section-title">Conteúdo</h2>

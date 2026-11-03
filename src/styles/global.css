@@ -381,7 +381,7 @@ body {
 
 .assuntos__box {
   margin-top: 28px;
-  padding: 44px 56px;
+  padding: 44px 56px 60px;
 }
 
 /* Nuvem de assuntos: frases como adesivos misturados com símbolos.
@@ -658,7 +658,7 @@ body {
   .collage__heart { width: 56px; bottom: -28px; left: -20px; }
 
   .assuntos__header { padding: 14px 56px 14px 20px; }
-  .assuntos__box { padding: 40px 16px; }
+  .assuntos__box { padding: 40px 16px 52px; }
   /* Itens quase um por linha: deslocamento menor para não encostarem */
   .topics { gap: 22px 16px; --y-escala: 0.35; }
   .topic { font-size: 1rem; padding: 6px 12px; }

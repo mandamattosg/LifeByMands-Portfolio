@@ -3,12 +3,18 @@
 //
 // Centraliza o conteúdo da seção na tela quando ele cabe; quando não cabe
 // (celular, telas baixas), alinha o começo do conteúdo perto do topo para
-// o título não ficar escondido.
+// o título não ficar escondido. Seções com data-scroll="topo" (que começam
+// com uma faixa colada no topo, como Conteúdo) param alinhadas pelo topo.
 const MARGEM_TOPO = 24
 
 export function scrollToSection(id) {
   const section = document.getElementById(id)
   if (!section) return
+
+  if (section.dataset.scroll === 'topo') {
+    window.scrollTo({ top: window.scrollY + section.getBoundingClientRect().top, behavior: 'smooth' })
+    return
+  }
 
   const conteudo = section.firstElementChild ?? section
   const { top, height } = conteudo.getBoundingClientRect()

@@ -1,4 +1,6 @@
 import Window from '../components/Window.jsx'
+import PixelButton from '../components/PixelButton.jsx'
+import { scrollToSection } from '../lib/scroll.js'
 import {
   AtomIcon,
   BoltIcon,
@@ -78,6 +80,7 @@ export default function Assuntos() {
           {/* Duas estrelas em cantos opostos da janela, fora do fluxo */}
           <Star className="assuntos__corner assuntos__corner--a" />
           <FourPointStar className="assuntos__corner assuntos__corner--b" />
+          <PixelButton onClick={() => scrollToSection('conteudo')}>Ver conteúdos</PixelButton>
         </Window>
         <PixelCursor className="deco assuntos__cursor" />
         <Sparkle className="deco assuntos__sparkle" fill="var(--blue-deep)" />
