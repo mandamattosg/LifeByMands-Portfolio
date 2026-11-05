@@ -851,21 +851,27 @@ body {
 }
 
 /* Acabamento do fim da seção: borda em escada pixelada no lilás do fim do degradê
-   (a cor está no próprio SVG), com a mesma sombra da faixa em V */
+   (a cor está no próprio SVG), com a sombra desenhada como uma segunda escada mais
+   escura, 10px abaixo. Fica dentro da seção (padding-bottom) e sem filtro, porque o
+   Safari do iPhone corta o que passa do limite da seção e falha com filtros. */
+.conteudo {
+  padding-bottom: 34px;
+}
+
 .conteudo__body {
   position: relative;
 }
 
-/* A sombra fica só na borda: um filtro no fundo inteiro (muito alto) não é desenhado no iPhone */
 .conteudo__body::after {
   content: '';
-  filter: drop-shadow(0 10px 0 var(--shadow));
   position: absolute;
   left: 0;
   right: 0;
   top: calc(100% - 1px);
-  height: 24px;
-  background: url('../assets/borda-escada.svg') 0 0 / 48px 24px repeat-x;
+  height: 34px;
+  background:
+    url('../assets/borda-escada.svg') 0 0 / 48px 24px repeat-x,
+    url('../assets/borda-escada-sombra.svg') 0 10px / 48px 24px repeat-x;
 }
 
 .conteudo__fim {
@@ -1240,9 +1246,13 @@ body {
   .assuntos__cursor { width: 38px; right: -4px; top: 28px; }
   .assuntos__sparkle { width: 70px; right: -14px; bottom: -44px; }
 
-  .conteudo { padding: 0; }
+  .conteudo { padding: 0 0 24px; }
   .conteudo__fim { margin-top: 48px; }
-  .conteudo__body::after { height: 16px; background-size: 32px 16px; }
+  .conteudo__body::after {
+    height: 24px;
+    background-size: 32px 16px;
+    background-position: 0 0, 0 8px;
+  }
   .metricas__header { padding: 14px 56px 14px 20px; }
   .metricas__box { padding: 20px 14px 40px; }
   .metricas__total { padding: 12px 14px; gap: 6px 20px; }
