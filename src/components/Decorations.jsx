@@ -158,6 +158,64 @@ export function BoltIcon(props) {
   )
 }
 
+export function NewspaperIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <path d="M8 8h28v30a4 4 0 0 0 4 4H12a4 4 0 0 1-4-4Z" fill="#fff" />
+      <path d="M36 18h6v20a4 4 0 0 1-8 0" fill="#fff" />
+      <path d="M14 15h16M14 22h16M14 29h10" />
+    </LineIcon>
+  )
+}
+
+export function KindleIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <rect x="10" y="4" width="28" height="40" rx="4" fill="#fff" />
+      <rect x="15" y="9" width="18" height="24" fill="var(--pink)" />
+      <path d="M19 16h10M19 21h10M19 26h6" strokeWidth="2" />
+      <path d="M21 39h6" />
+    </LineIcon>
+  )
+}
+
+export function CameraIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <rect x="6" y="6" width="36" height="36" rx="10" fill="#fff" />
+      <circle cx="24" cy="24" r="8" />
+      <circle cx="34" cy="14" r="1.5" fill="var(--navy)" stroke="none" />
+    </LineIcon>
+  )
+}
+
+export function NoteIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <path d="M20 34V8c2 6 8 9 14 9" />
+      <circle cx="14" cy="34" r="6" fill="#fff" />
+    </LineIcon>
+  )
+}
+
+export function PlayIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <rect x="4" y="10" width="40" height="28" rx="9" fill="#fff" />
+      <path d="M20 18v12l10-6Z" fill="var(--hot-pink)" />
+    </LineIcon>
+  )
+}
+
+export function MailIcon(props) {
+  return (
+    <LineIcon {...props}>
+      <rect x="5" y="10" width="38" height="28" rx="4" fill="#fff" />
+      <path d="m6 12 18 14 18-14" />
+    </LineIcon>
+  )
+}
+
 export function ClapperIcon(props) {
   return (
     <LineIcon {...props}>

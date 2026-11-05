@@ -4,6 +4,7 @@
   --white: #ffffff;
   --pink: #fad4de;
   --pink-deep: #f2b3c6;
+  --lilas: #d4c1ef;
   --hot-pink: #ec4f8f;
   --navy: #2c4f73;
   --ink: #3a3420;
@@ -111,6 +112,8 @@ body {
 /* ---------- Botão pixel ---------- */
 
 .pixel-button {
+  display: inline-block;
+  text-decoration: none;
   font-family: var(--font-pixel);
   font-size: 1.25rem;
   line-height: 1;
@@ -125,6 +128,7 @@ body {
 
 .pixel-button span {
   display: block;
+  white-space: nowrap;
   padding: 4px 12px;
   background: var(--button);
   border-right: 3px solid #8a8a8a;
@@ -538,7 +542,9 @@ body {
 
 /* ---------- Conteúdo ---------- */
 
+/* Brilhinhos brancos espalhados sobre o rosa da faixa e do fundo dos cards */
 .conteudo {
+  --textura-brilhos: url('../assets/textura-brilhos.svg') 0 0 / 64px 64px;
   display: block;
   place-items: normal;
   padding: 0;
@@ -550,16 +556,16 @@ body {
 }
 
 .conteudo__v {
-  min-height: 230px;
-  padding-top: 48px;
+  min-height: 150px;
+  padding-top: 34px;
   text-align: center;
-  background: var(--pink);
-  clip-path: polygon(0 0, 100% 0, 100% 28%, 50% 100%, 0 28%);
+  background: var(--textura-brilhos), var(--pink);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 50% 100%, 0 40%);
 }
 
 .conteudo__heart {
-  width: 100px;
-  top: 46px;
+  width: 80px;
+  top: 26px;
 }
 
 .conteudo__heart--left {
@@ -574,37 +580,584 @@ body {
 
 .conteudo__body {
   min-height: 70vh;
-  margin-top: 80px;
-  background: var(--pink);
+  margin-top: 28px;
+  padding: 40px 16px 72px;
+  /* A seção é longa: o rosa vai escurecendo até um lilás no final */
+  background: var(--textura-brilhos), linear-gradient(to bottom, var(--pink) 0%, var(--lilas) 100%);
+}
+
+/* ---------- Cards de vídeo ---------- */
+
+/* ---------- Estilos de conteúdo (categorias) ---------- */
+
+.categoria {
+  width: min(1000px, 100%);
+  margin: 0 auto;
+}
+
+.categoria + .categoria {
+  margin-top: 72px;
+}
+
+/* Título do estilo como um adesivo branco, no padrão dos assuntos */
+.categoria__titulo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 32px;
+  padding: 10px 22px 10px 14px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+  line-height: 1.2;
+  color: var(--navy);
+  background: var(--white);
+  border: 2px solid var(--navy);
+  border-radius: 999px;
+  box-shadow: 5px 5px 0 var(--shadow);
+}
+
+.categoria__titulo svg {
+  flex: none;
+  width: 34px;
+  height: 34px;
+}
+
+.categoria__grupo + .categoria__grupo {
+  margin-top: 40px;
+}
+
+.categoria__subtitulo {
+  width: fit-content;
+  margin: 0 auto 20px;
+  padding: 4px 16px;
+  font-family: var(--font-pixel);
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: var(--white);
+  background: var(--hot-pink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--shadow);
+}
+
+/* Cards centralizados (o que sobra na última linha também fica no meio);
+   no celular, dois por linha */
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 36px 28px;
+}
+
+.video-card {
+  width: min(200px, 100%);
+  padding: 8px 8px 14px;
+  border: 0;
+  background: var(--white);
+  box-shadow: 8px 8px 0 var(--shadow);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.video-card--em-breve {
+  cursor: default;
+}
+
+.video-card--em-breve .video-card__title {
+  color: var(--blue-deep);
+  font-style: italic;
+}
+
+.video-card:not(:disabled):hover {
+  transform: translateY(-4px) rotate(-1deg);
+}
+
+.video-card:focus-visible {
+  outline: 3px dashed var(--navy);
+  outline-offset: 4px;
+}
+
+.video-card__cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: var(--blue);
+}
+
+.video-card--carrossel .video-card__cover {
+  aspect-ratio: 4 / 5;
+}
+
+.video-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Capa provisória enquanto não há print: xadrez do site em miniatura */
+.video-card__cover--vazia {
+  background:
+    repeating-conic-gradient(var(--blue) 0 25%, var(--white) 0 50%) 0 0 / 40px 40px;
+  opacity: 0.85;
+}
+
+.video-card__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--hot-pink);
+  border: 3px solid var(--white);
+  box-shadow: 4px 4px 0 var(--shadow);
+  transition: transform 0.2s ease;
+}
+
+.video-card__play svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+  fill: var(--white);
+}
+
+/* Ícone de fotos empilhadas (carrossel): traço branco em vez de preenchimento */
+.video-card__play svg.video-card__icon-carrossel {
+  margin-left: 0;
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.video-card:hover .video-card__play {
+  transform: scale(1.1);
+}
+
+.video-card__title {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
+/* ---------- Janela do vídeo ---------- */
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(44, 79, 115, 0.55);
+}
+
+.video-modal__window {
+  --largura: min(400px, calc(100vw - 32px));
+  width: var(--largura);
+  max-height: calc(100dvh - 32px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.video-modal__window--horizontal {
+  --largura: min(860px, calc(100vw - 32px));
+}
+
+.video-modal__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px 10px 20px;
+  font-family: var(--font-title);
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.video-modal__bar span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.video-modal__x {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #111;
+  background: var(--button);
+  border: 2px solid #000;
+  cursor: pointer;
+}
+
+.video-modal__x:focus-visible {
+  outline: 3px dashed var(--navy);
+  outline-offset: 2px;
+}
+
+/* O player rola por dentro se não couber na altura da tela */
+.video-modal__player {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  margin: 0 12px;
+  background: var(--white);
+}
+
+.video-modal__player iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+/* Instagram/TikTok: o player tem cabeçalho e rodapé além do vídeo
+   (medido no player do Instagram: vídeo ≈ 1,2 × a largura, mais ~210px) */
+.video-modal__window--vertical iframe {
+  height: calc((var(--largura) - 24px) * 1.2 + 215px);
+}
+
+.video-modal__window--horizontal iframe {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+/* Dois botões pixel; em telas estreitas, um embaixo do outro */
+.video-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px 16px;
+  padding: 16px 16px 18px;
+}
+
+.video-modal__actions .pixel-button {
+  min-width: 110px;
+  text-align: center;
+}
+
+/* Acabamento do fim da seção: borda em escada pixelada no lilás do fim do degradê
+   (a cor está no próprio SVG), com a mesma sombra da faixa em V */
+.conteudo__body {
+  position: relative;
+  filter: drop-shadow(0 10px 0 var(--shadow));
+}
+
+.conteudo__body::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% - 1px);
+  height: 24px;
+  background: url('../assets/borda-escada.svg') 0 0 / 48px 24px repeat-x;
+}
+
+.conteudo__fim {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+/* ---------- Métricas ---------- */
+
+/* Lilás no lugar do rosa, como o Contato */
+.metricas {
+  --pink: var(--lilas);
+}
+
+.metricas__stage {
+  position: relative;
+  width: min(900px, 100%);
+}
+
+.metricas__header {
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.metricas__box {
+  margin-top: 20px;
+  padding: 28px 32px 44px;
+}
+
+/* Faixa azul escura com o total somado das redes */
+.metricas__total {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 36px;
+  margin-bottom: 20px;
+  padding: 14px 24px;
+  background: var(--navy);
+  border-radius: 16px;
+  outline: 2px dashed var(--pink-deep);
+  outline-offset: -7px;
+  box-shadow: 5px 5px 0 var(--shadow);
+}
+
+.metricas__total h3 {
+  margin: 0;
+  font-family: var(--font-pixel);
+  font-weight: normal;
+  font-size: 1.4rem;
+  color: var(--white);
+}
+
+.metricas__total dl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 36px;
+  margin: 0;
+}
+
+/* Número em cima, descrição embaixo; alinhados pelo topo mesmo com descrições de alturas diferentes */
+.metricas__total dl > div,
+.rede__numero {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+}
+
+.metricas__total dd,
+.rede__numero dd {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.metricas__total dd {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  color: var(--pink-deep);
+}
+
+.metricas__total dt,
+.rede__numero dt {
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+}
+
+.metricas__total dt {
+  color: var(--white);
+}
+
+/* Uma linha branca por rede: nome à esquerda, números lado a lado */
+.metricas__redes {
+  display: grid;
+  gap: 14px;
+}
+
+.rede {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--white);
+  border: 2px solid var(--navy);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 var(--shadow);
+}
+
+.rede__nome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--navy);
+}
+
+.rede__nome svg {
+  flex: none;
+  width: 30px;
+  height: 30px;
+}
+
+.rede__numeros {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.rede__numero dd,
+.metricas__total dd {
+  white-space: nowrap;
+}
+
+.rede__numero dd {
+  font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  color: var(--hot-pink);
+}
+
+.rede__numero dt {
+  color: var(--navy);
+}
+
+.metricas__nota {
+  margin: 14px 0 0;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--navy);
+}
+
+.metricas__cursor {
+  width: 60px;
+  right: -8px;
+  top: 20px;
+  transform: rotate(-20deg);
+}
+
+.metricas__star {
+  width: 70px;
+  left: -30px;
+  top: -34px;
+  transform: rotate(-12deg);
+}
+
+.metricas__sparkle {
+  width: 100px;
+  left: -46px;
+  bottom: -40px;
 }
 
 /* ---------- Contato ---------- */
 
+/* O final do portfólio continua o degradê da seção Conteúdo: lilás no lugar do rosa */
+.contato {
+  --pink: var(--lilas);
+}
+
 .contato__stage {
+  width: min(860px, 100%);
+  display: grid;
+  gap: 16px;
+}
+
+/* Título com as manchas e os brilhos, num bloco próprio */
+.contato__titulo {
   position: relative;
-  width: min(720px, 100%);
-  min-height: 300px;
+  min-height: 150px;
   display: grid;
   place-items: center;
 }
 
+/* Janela com o pedido de mídia kit, o e-mail e as redes */
+.contato__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 44px 32px 48px;
+  text-align: center;
+}
+
+.contato__cta {
+  margin: 0;
+  font-family: var(--font-pixel);
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--navy);
+}
+
+.contato__email,
+.contato__redes a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  background: var(--white);
+  border: 2px solid var(--navy);
+  border-radius: 999px;
+  box-shadow: 5px 5px 0 var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.contato__email {
+  max-width: 100%;
+  padding: 14px 28px 14px 18px;
+  /* Diminui com a largura da tela para o e-mail caber sempre numa linha */
+  font-size: clamp(0.85rem, 4.4vw, 1.7rem);
+}
+
+.contato__email span {
+  white-space: nowrap;
+}
+
+.contato__email svg {
+  flex: none;
+  width: 38px;
+  height: 38px;
+}
+
+.contato__email:hover,
+.contato__redes a:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--shadow);
+}
+
+.contato__email:focus-visible,
+.contato__redes a:focus-visible {
+  outline: 3px dashed var(--navy);
+  outline-offset: 4px;
+}
+
+.contato__redes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 18px;
+}
+
+.contato__redes a {
+  padding: 10px 22px 10px 12px;
+  font-size: 1.2rem;
+}
+
+.contato__redes svg {
+  flex: none;
+  width: 32px;
+  height: 32px;
+}
+
 .contato__blob {
   position: relative;
-  padding: 48px clamp(28px, 6vw, 80px);
+  padding: 26px clamp(24px, 5vw, 56px);
   background: var(--pink);
   border-radius: 42px 64px 36px 50px / 50px 36px 56px 42px;
   transform: rotate(-2deg);
-}
-
-.contato__blob--back {
-  position: absolute;
-  width: 80%;
-  height: 140px;
-  top: 50px;
-  right: 6%;
-  padding: 0;
-  background: rgba(250, 212, 222, 0.55);
-  transform: rotate(3deg);
 }
 
 .contato__stars {
@@ -617,7 +1170,12 @@ body {
 }
 
 .contato__stars svg {
-  width: 46px;
+  width: 30px;
+}
+
+/* Título menor que o das outras seções: o destaque aqui é o bloco de contato */
+.contato .section-title {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
 }
 
 .contato__stars--left {
@@ -685,13 +1243,48 @@ body {
   .assuntos__sparkle { width: 70px; right: -14px; bottom: -44px; }
 
   .conteudo { padding: 0; }
-  .conteudo__v { min-height: 180px; padding-top: 40px; }
-  .conteudo__heart { width: 60px; top: 84px; }
-  .conteudo__body { margin-top: 48px; }
+  .conteudo__fim { margin-top: 48px; }
+  .conteudo__body::after { height: 16px; background-size: 32px 16px; }
+  .metricas__header { padding: 14px 56px 14px 20px; }
+  .metricas__box { padding: 20px 14px 40px; }
+  .metricas__total { padding: 12px 14px; gap: 6px 20px; }
+  .metricas__total dl { gap: 6px 22px; }
+  .rede { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 12px 10px; }
+  .rede__nome { font-size: 1.1rem; justify-content: center; }
+  .rede__nome svg { width: 24px; height: 24px; }
+  .metricas__total dt, .rede__numero dt { font-size: 0.75rem; line-height: 1.2; }
+  .rede__numero dd { font-size: 1.25rem; }
+  .rede__numeros { gap: 4px; }
+  .rede { padding: 18px 18px 20px; }
+  .rede__nome { font-size: 1.2rem; margin-bottom: 14px; }
+  .rede__nome svg { width: 28px; height: 28px; }
+  .metricas__cursor { width: 38px; right: -4px; top: 18px; }
+  .metricas__star { width: 44px; left: -6px; top: -26px; }
+  .metricas__sparkle { width: 60px; left: -10px; bottom: -30px; }
 
-  .contato__blob { padding: 36px 24px; }
+  .conteudo__v { min-height: 120px; padding-top: 28px; }
+  .conteudo__heart { width: 46px; top: 34px; }
+  .conteudo__body { margin-top: 20px; padding: 32px 16px 56px; }
+  .categoria + .categoria { margin-top: 56px; }
+  .categoria__titulo { gap: 8px; padding: 8px 16px 8px 10px; margin-bottom: 24px; }
+  .categoria__titulo svg { width: 26px; height: 26px; }
+  .video-grid { gap: 24px 16px; }
+  .video-card { width: calc(50% - 8px); padding: 6px 6px 10px; box-shadow: 5px 5px 0 var(--shadow); }
+  .video-card__title { font-size: 0.9rem; margin-top: 8px; }
+  .video-card__play { width: 48px; height: 48px; }
+  .video-card__play svg { width: 22px; height: 22px; }
+
+  .contato__titulo { min-height: 120px; }
+  .contato__card { padding: 30px 14px 32px; gap: 18px; }
+  .contato__cta { font-size: 1.6rem; }
+  .contato__email { padding: 10px 16px 10px 12px; gap: 8px; }
+  .contato__email svg { width: 26px; height: 26px; }
+  .contato__redes { gap: 10px; }
+  .contato__redes a { padding: 6px 12px 6px 8px; font-size: 0.95rem; gap: 6px; }
+  .contato__redes svg { width: 24px; height: 24px; }
+  .contato__blob { padding: 20px 22px; }
   .section-title--sticker { -webkit-text-stroke-width: 7px; }
-  .contato__stars svg { width: 30px; }
+  .contato__stars svg { width: 22px; }
   .contato__stars--left { left: -6px; }
   .contato__stars--right { right: -6px; }
 }
