@@ -10,7 +10,7 @@ const REDES = [
 ]
 
 // Baseada no slide "Thank you": título em adesivo sobre uma mancha, com brilhos pretos
-// nas laterais. Embaixo, uma janela com o e-mail (para pedir o mídia kit) e as redes.
+// nas laterais. Embaixo, uma janela com o e-mail para propostas de parceria e as redes.
 export default function Contato() {
   return (
     <section id="contato" className="section contato">
@@ -28,8 +28,8 @@ export default function Contato() {
         </div>
 
         <Window className="contato__card">
-          <p className="contato__cta">Solicite o mídia kit</p>
-          <a className="contato__email" href={`mailto:${EMAIL}?subject=${encodeURIComponent('Mídia kit')}`}>
+          <p className="contato__cta">Parcerias e publis: envie sua proposta</p>
+          <a className="contato__email" href={`mailto:${EMAIL}?subject=${encodeURIComponent('Proposta de parceria')}`}>
             <MailIcon />
             <span>{EMAIL}</span>
           </a>

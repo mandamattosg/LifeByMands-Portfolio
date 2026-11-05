@@ -1068,7 +1068,7 @@ body {
   place-items: center;
 }
 
-/* Janela com o pedido de mídia kit, o e-mail e as redes */
+/* Janela com o convite para propostas, o e-mail e as redes */
 .contato__card {
   display: flex;
   flex-direction: column;
